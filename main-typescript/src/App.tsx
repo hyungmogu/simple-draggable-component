@@ -3,7 +3,7 @@ import React from  'react';
 
 import { AppProvider, AppContextInterface } from './components/Context';
 import Draggable from './components/Draggable';
-// import Box from './components/Box';
+import Box from './components/Box';
 
 
 const appContext: AppContextInterface = {
@@ -17,9 +17,9 @@ const App = () => (
     <AppProvider value={appContext}>
         <main>
             <Draggable>
-                {/* <Box/>
                 <Box/>
-                <Box/> */}
+                <Box/>
+                <Box/>
             </Draggable>
         </main>
     </AppProvider>

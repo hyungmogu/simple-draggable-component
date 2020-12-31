@@ -3,8 +3,7 @@ import React from 'react';
 
 type Props = {
     children: React.ReactNode
-  }
-
+};
 
 class Draggable extends React.Component<Props> {
     constructor(props: Props) {
