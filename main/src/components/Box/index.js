@@ -2,13 +2,21 @@ import './style.css';
 import React from  'react';
 import { AppConsumer } from '../Context';
 
+let componentStyle = {
+    "width": "100px",
+    "height": "100px",
+    "backgroundColor": "blue",
+    "display": "inline-block",
+    "position": "absolute"
+};
+
 class Box extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
             dragStart: [0,0],
-            style: {
+            additionalStyle: {
                 left: '0px',
                 top: '0px'
             }
@@ -40,8 +48,8 @@ class Box extends React.Component {
         // Apply new left position
         // Apply new top position
         this.setState((state, props) => {
-            let newLeft = parseFloat(state.style.left) + diffX;
-            let newTop = parseFloat(state.style.top) + diffY;
+            let newLeft = parseFloat(state.additionalStyle.left) + diffX;
+            let newTop = parseFloat(state.additionalStyle.top) + diffY;
 
             // Stop if new position is out of bound
             if ((newLeft < 0) ||
@@ -63,7 +71,13 @@ class Box extends React.Component {
 
     render() {
         return (
-            <div style={this.state.style} className="box" draggable="true" onDragStart={this.handleDragStart} onDragEnd={this.handleDragEnd}></div>
+            <div id={`box-${this.props.key}`}
+                 className="box"
+                 style={{...componentStyle, ...this.state.style}}
+                 draggable="true"
+                 onDragStart={this.handleDragStart}
+                 onDragEnd={this.handleDragEnd}
+            ></div>
         );
     }
 }

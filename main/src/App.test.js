@@ -1,27 +1,31 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { fireEvent, render, screen } from '@testing-library/react';
 
-// Draggable Component
+import App from './App';
+import Draggable from './components/Draggable';
+import Box from './components/Box';
+
+
+test('renders draggable component', () => {
+  let expected = 1;
+  let notExpected = 2;
+
+  const { container } = render(<App/>);
+  expect(container.querySelectorAll('.draggable-area')).toHaveLength(expected);
+  expect(container.querySelectorAll('.draggable-area')).not.toHaveLength(notExpected);
+});
+
 test('renders draggable component with correct dimension', () => {
+  const { container } = render(<Draggable/>);
+  document.body.appendChild(container);
+  let e = document.querySelector('.draggable-area');
+
+  expect(e).toHaveStyle({width: "500px", height: "500px"});
 });
 
 test('renders draggable components with position set as relative', () => {
-});
+  const { container } = render(<Draggable/>);
+  document.body.appendChild(container);
+  let e = document.querySelector('.draggable-area');
 
-
-// Box Component
-test('renders box component with correct dimension', () => {
-});
-
-test('renders box components with total count of 3', () => {
-});
-
-test('renders box components with position set as absolute', () => {
-});
-
-test('renders box with updated position if dropped position is inside draggable area', () => {
-});
-
-
-test('renders box with current position if dropped position is outside of draggable area', () => {
+  expect(e).toHaveStyle({position: "relative"});
 });

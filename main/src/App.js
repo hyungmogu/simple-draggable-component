@@ -15,9 +15,9 @@ function App() {
         >
             <main>
                 <Draggable>
-                    <Box/>
-                    <Box/>
-                    <Box/>
+                    <Box key={1}/>
+                    <Box key={2}/>
+                    <Box key={3}/>
                 </Draggable>
             </main>
         </AppProvider>
