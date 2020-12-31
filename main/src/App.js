@@ -1,13 +1,19 @@
 import './App.css';
 import React from  'react';
 
-// class Draggable() {
-//     return (
-//         <div>
+class Draggable extends React.Component {
+    constructor(props) {
+        super(props);
+    }
 
-//         </div>
-//     );
-// }
+    render() {
+        return (
+            <div className="draggable-area">
+                {this.props.children}
+            </div>
+        );
+    }
+}
 
 class Box extends React.Component {
 
@@ -63,7 +69,13 @@ class Box extends React.Component {
 
 function App() {
     return (
-        <Box/>
+        <main>
+            <Draggable>
+                <Box/>
+                <Box/>
+                <Box/>
+            </Draggable>
+        </main>
     );
 }
 
