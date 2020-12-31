@@ -1,8 +1,13 @@
 import './style.css';
-import React from  'react';
+import React from 'react';
 
-class Draggable extends React.Component {
-    constructor(props) {
+type Props = {
+    children: React.ReactNode
+  }
+
+
+class Draggable extends React.Component<Props> {
+    constructor(props: Props) {
         super(props);
     }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface AppContextInterface {
+export interface AppContextInterface {
     boardWidth: string,
     boardHeight: string,
     boxWidth: string,
