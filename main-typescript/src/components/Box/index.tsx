@@ -29,7 +29,7 @@ class Box extends React.Component<Props, State> {
         }
     }
 
-    public handleDragStart = (e: any) => {
+    public handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
         // Store the position of mouse drag to state variable 'dragStart' when drag starts
         let clientX: number = e.clientX;
         let clientY: number = e.clientY;
