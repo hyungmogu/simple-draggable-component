@@ -90,6 +90,7 @@ class Box extends Component<Props, State> {
                  draggable="true"
                  onDragStart={this.handleDragStart}
                  onDragEnd={this.handleDragEnd}
+                 role="box"
             ></div>
         );
     }

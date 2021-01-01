@@ -3,6 +3,7 @@ import { Simulate } from 'react-dom/test-utils';
 
 import App from './App';
 
+
 describe("When App component is loaded", () => {
   test('renders Draggable component', () => {
     render(<App/>);
@@ -69,8 +70,8 @@ describe("When Box component is dragged", () => {
     let resLeft = style["left"];
     let resTop = style["top"];
 
-    expect(resLeft).toBe("");
-    expect(resTop).toBe("");
+    expect(resLeft).toBe("0px");
+    expect(resTop).toBe("0px");
   });
 
   test('renders a Box component with current position if dropped outside of Draggable component (top)', () => {
@@ -85,10 +86,9 @@ describe("When Box component is dragged", () => {
     let resLeft = style["left"];
     let resTop = style["top"];
 
-    expect(resLeft).toBe("");
-    expect(resTop).toBe("");
+    expect(resLeft).toBe("0px");
+    expect(resTop).toBe("0px");
   });
-
 
   test('renders a Box component with current position if dropped outside of Draggable component (right)', () => {
     render(<App/>);
@@ -102,8 +102,8 @@ describe("When Box component is dragged", () => {
     let resLeft = style["left"];
     let resTop = style["top"];
 
-    expect(resLeft).toBe("");
-    expect(resTop).toBe("");
+    expect(resLeft).toBe("0px");
+    expect(resTop).toBe("0px");
   });
 
   test('renders a Box component with current position if dropped outside of Draggable Component (diagonal)', () => {
@@ -118,7 +118,7 @@ describe("When Box component is dragged", () => {
     let resLeft = style["left"];
     let resTop = style["top"];
 
-    expect(resLeft).toBe("");
-    expect(resTop).toBe("");
+    expect(resLeft).toBe("0px");
+    expect(resTop).toBe("0px");
   });
 });

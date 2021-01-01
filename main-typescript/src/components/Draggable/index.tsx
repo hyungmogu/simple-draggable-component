@@ -17,6 +17,7 @@ class Draggable extends Component<Props> {
         return (
             <div className="draggable-area"
                  style={componentStyle}
+                 role="draggable-area"
             >
                 {this.props.children}
             </div>
