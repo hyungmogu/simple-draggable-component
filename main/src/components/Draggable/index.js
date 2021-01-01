@@ -18,6 +18,7 @@ class Draggable extends React.Component {
             <div
                 className="draggable-area"
                 style={componentStyle}
+                role="draggable-area"
             >
                 {this.props.children}
             </div>

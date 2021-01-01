@@ -71,12 +71,12 @@ class Box extends React.Component {
 
     render() {
         return (
-            <div id={`box-${this.props.key}`}
-                 className="box"
+            <div className="box"
                  style={{...componentStyle, ...this.state.style}}
                  draggable="true"
                  onDragStart={this.handleDragStart}
                  onDragEnd={this.handleDragEnd}
+                 role="box"
             ></div>
         );
     }
