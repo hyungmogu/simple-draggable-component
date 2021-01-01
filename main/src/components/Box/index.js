@@ -1,5 +1,7 @@
-import React from  'react';
+import React, { Component } from 'react';
+
 import { AppConsumer } from '../Context';
+
 
 let componentStyle = {
     "width": "100px",
@@ -9,8 +11,8 @@ let componentStyle = {
     "position": "absolute"
 };
 
-class Box extends React.Component {
 
+class Box extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -23,8 +25,8 @@ class Box extends React.Component {
     }
 
     handleDragStart = (e) => {
-        // Store the position of mouse drag to state variable 'dragStart' when drag starts
-
+        // Store the position of mouse drag to state variable 'dragStart' when
+        // drag starts
         this.setState((state, props) => {
             return {
                 start: [e.clientX, e.clientY]
@@ -80,6 +82,7 @@ class Box extends React.Component {
         );
     }
 }
+
 
 export default React.forwardRef((props, ref) => (
     <AppConsumer>

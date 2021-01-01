@@ -1,9 +1,9 @@
 import './App.css';
-import React from  'react';
 
 import { AppProvider } from './components/Context';
 import Draggable from './components/Draggable';
 import Box from './components/Box';
+
 
 function App() {
     return (
@@ -23,5 +23,6 @@ function App() {
         </AppProvider>
     );
 }
+
 
 export default App;

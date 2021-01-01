@@ -1,5 +1,7 @@
 import React, { Component, CSSProperties } from 'react';
+
 import { AppConsumer, AppContextInterface } from '../Context';
+
 
 interface Props {
     appContext?: AppContextInterface
@@ -13,6 +15,7 @@ interface State {
     }
 };
 
+
 let componentStyle: CSSProperties = {
     "width": "100px",
     "height": "100px",
@@ -23,7 +26,6 @@ let componentStyle: CSSProperties = {
 
 
 class Box extends Component<Props, State> {
-
     constructor(props: Props) {
         super(props);
         this.state = {
@@ -36,7 +38,8 @@ class Box extends Component<Props, State> {
     }
 
     public handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
-        // Store the position of mouse drag to state variable 'dragStart' when drag starts
+        // Store the position of mouse drag to state variable 'dragStart' when
+        // drag starts
         let clientX: number = e.clientX;
         let clientY: number = e.clientY;
 

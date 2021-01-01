@@ -1,4 +1,5 @@
-import React from  'react';
+import { Component } from 'react';
+
 
 let componentStyle = {
     "width": "500px",
@@ -7,11 +8,8 @@ let componentStyle = {
     "backgroundColor": "yellow"
 };
 
-class Draggable extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
+class Draggable extends Component {
     render() {
         return (
             <div
@@ -24,5 +22,6 @@ class Draggable extends React.Component {
         );
     }
 }
+
 
 export default Draggable;

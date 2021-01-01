@@ -1,5 +1,4 @@
 import './App.css';
-import React from  'react';
 
 import { AppProvider, AppContextInterface } from './components/Context';
 import Draggable from './components/Draggable';

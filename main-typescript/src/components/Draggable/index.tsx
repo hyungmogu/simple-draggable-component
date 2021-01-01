@@ -1,8 +1,10 @@
 import React, { Component, CSSProperties } from 'react';
 
+
 interface Props {
     children: React.ReactNode
 };
+
 
 let componentStyle: CSSProperties = {
     "width": "500px",
@@ -24,5 +26,6 @@ class Draggable extends Component<Props> {
         );
     }
 }
+
 
 export default Draggable;
