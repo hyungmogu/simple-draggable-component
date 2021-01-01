@@ -1,28 +1,34 @@
-import './style.css';
-import React from  'react';
+import React, { Component, CSSProperties } from 'react';
 import { AppConsumer, AppContextInterface } from '../Context';
 
 interface Props {
     appContext?: AppContextInterface
 };
 
-interface Style {
-    left: string,
-    top: string
-};
-
 interface State {
     dragStart: number[],
-    style: Style
+    additionalStyles: {
+        left: string,
+        top: string
+    }
 };
 
-class Box extends React.Component<Props, State> {
+let componentStyle: CSSProperties = {
+    "width": "100px",
+    "height": "100px",
+    "backgroundColor": "blue",
+    "display": "inline-block",
+    "position": "absolute"
+};
+
+
+class Box extends Component<Props, State> {
 
     constructor(props: Props) {
         super(props);
         this.state = {
             dragStart: [0,0],
-            style: {
+            additionalStyles: {
                 left: '0px',
                 top: '0px'
             }
@@ -57,8 +63,8 @@ class Box extends React.Component<Props, State> {
         // Calculate box's new position
         // Apply new left position
         // Apply new top position
-        let newLeft: number = parseFloat(this.state.style.left) + diffX;
-        let newTop: number = parseFloat(this.state.style.top) + diffY;
+        let newLeft: number = parseFloat(this.state.additionalStyles.left) + diffX;
+        let newTop: number = parseFloat(this.state.additionalStyles.top) + diffY;
 
         // Stop if new posit    ion is out of bound
         if ((newLeft < 0) ||
@@ -70,7 +76,7 @@ class Box extends React.Component<Props, State> {
         }
 
         this.setState({
-            style: {
+            additionalStyles: {
                 left: `${newLeft}px`,
                 top: `${newTop}px`
             }
@@ -79,10 +85,16 @@ class Box extends React.Component<Props, State> {
 
     public render() {
         return (
-            <div style={this.state.style} className="box" draggable="true" onDragStart={this.handleDragStart} onDragEnd={this.handleDragEnd}></div>
+            <div className="box"
+                 style={{...componentStyle , ...this.state.additionalStyles}}
+                 draggable="true"
+                 onDragStart={this.handleDragStart}
+                 onDragEnd={this.handleDragEnd}
+            ></div>
         );
     }
 }
+
 
 export default React.forwardRef<Box,Props>((props, ref) => (
     <AppConsumer>

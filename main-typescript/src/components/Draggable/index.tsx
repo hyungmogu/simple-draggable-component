@@ -1,18 +1,23 @@
-import './style.css';
-import React from 'react';
+import React, { Component, CSSProperties } from 'react';
 
 interface Props {
     children: React.ReactNode
 };
 
-class Draggable extends React.Component<Props> {
-    constructor(props: Props) {
-        super(props);
-    }
+let componentStyle: CSSProperties = {
+    "width": "500px",
+    "height": "500px",
+    "position": "relative",
+    "backgroundColor": "yellow"
+};
 
+
+class Draggable extends Component<Props> {
     render() {
         return (
-            <div className="draggable-area">
+            <div className="draggable-area"
+                 style={componentStyle}
+            >
                 {this.props.children}
             </div>
         );

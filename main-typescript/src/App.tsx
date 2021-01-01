@@ -13,6 +13,7 @@ const appContext: AppContextInterface = {
   boxHeight: '100px'
 };
 
+
 const App = () => (
     <AppProvider value={appContext}>
         <main>
@@ -24,5 +25,6 @@ const App = () => (
         </main>
     </AppProvider>
 );
+
 
 export default App;
