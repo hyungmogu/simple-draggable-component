@@ -1,4 +1,3 @@
-import './style.css';
 import React from  'react';
 import { AppConsumer } from '../Context';
 

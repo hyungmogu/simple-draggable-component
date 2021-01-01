@@ -2,58 +2,47 @@ import { render, screen } from '@testing-library/react';
 import { Simulate } from 'react-dom/test-utils';
 
 import App from './App';
-import Draggable from './components/Draggable';
-import Box from './components/Box';
 
-describe("When the App component is loaded", () => {
-  test('renders draggable component', () => {
-    let expected = 1;
-    let notExpected = 2;
+describe("When App component is loaded", () => {
+  test('renders Draggable component', () => {
+    render(<App/>);
+    let res = screen.getAllByRole('draggable-area');
 
-    const { container } = render(<App/>);
-    expect(container.querySelectorAll('.draggable-area')).toHaveLength(expected);
-    expect(container.querySelectorAll('.draggable-area')).not.toHaveLength(notExpected);
+    expect(res).toHaveLength(1);
   });
 
-  test('renders draggable component with correct dimension', () => {
-    const { container } = render(<Draggable/>);
-    document.body.appendChild(container);
-    let e = document.querySelector('.draggable-area');
+  test('renders Draggable component with correct dimension', () => {
+    render(<App/>);
+    let res = screen.getByRole('draggable-area');
 
-    expect(e).toHaveStyle({width: "500px", height: "500px"});
+    expect(res).toHaveStyle({width: "500px", height: "500px"});
   });
 
-  test('renders draggable components with position set as relative', () => {
-    const { container } = render(<Draggable/>);
-    document.body.appendChild(container);
-    let e = document.querySelector('.draggable-area');
+  test('renders Draggable component with position set as relative', () => {
+    render(<App/>);
+    let res = screen.getByRole('draggable-area');
 
-    expect(e).toHaveStyle({position: "relative"});
+    expect(res).toHaveStyle({position: "relative"});
   });
 
-  test('renders box components with total count of 3', () => {
-    let expected = 3;
-    let notExpected = 2;
+  test('renders Box components with total count of 3', () => {
+    render(<App/>);
+    let res = screen.getAllByRole('box');
 
-    const { container } = render(<App/>);
-    expect(container.querySelectorAll('.box')).toHaveLength(expected);
-    expect(container.querySelectorAll('.box')).not.toHaveLength(notExpected); // sanity test
+    expect(res).toHaveLength(3);
   });
 
-  test('renders box components with position set as absolute', () => {
-    const { container } = render(<Box/>);
-    document.body.appendChild(container);
-    let e = document.querySelector('.box');
+  test('renders Box components with position set as absolute', () => {
+    render(<App/>);
+    let res = screen.getAllByRole('box')[0];
 
-    expect(e).toHaveStyle({position: "absolute"});
-    expect(e).not.toHaveStyle({position: "relative"}); // sanity test
+    expect(res).toHaveStyle({position: "absolute"});
   });
 })
 
 describe("When Box component is dragged", () => {
-  test('renders box with updated position if dropped position is inside draggable area', async () => {
-    const { container } = render(<App/>);
-    document.body.appendChild(container);
+  test('renders a Box component with updated position if dropped inside of Draggable component', async () => {
+    render(<App/>);
     let e = screen.getAllByRole("box")[0];
 
     Simulate.dragStart(e, {clientX: 0, clientY: 0});
@@ -68,9 +57,8 @@ describe("When Box component is dragged", () => {
     expect(resTop).toBe("150px");
   });
 
-  test('renders box with current position if dropped position is outside of draggable area (left)', () => {
-    const { container } = render(<App/>);
-    document.body.appendChild(container);
+  test('renders a Box component with current position if dropped outside of Draggable component (left)', () => {
+    render(<App/>);
     let e = screen.getAllByRole("box")[0];
 
     Simulate.dragStart(e, {clientX: 0, clientY: 0});
@@ -85,9 +73,8 @@ describe("When Box component is dragged", () => {
     expect(resTop).toBe("");
   });
 
-  test('renders box with current position if dropped position is outside of draggable area (top)', () => {
-    const { container } = render(<App/>);
-    document.body.appendChild(container);
+  test('renders a Box component with current position if dropped outside of Draggable component (top)', () => {
+    render(<App/>);
     let e = screen.getAllByRole("box")[0];
 
     Simulate.dragStart(e, {clientX: 10, clientY: 10});
@@ -103,9 +90,8 @@ describe("When Box component is dragged", () => {
   });
 
 
-  test('renders box with current position if dropped position is outside of draggable area (right)', () => {
-    const { container } = render(<App/>);
-    document.body.appendChild(container);
+  test('renders a Box component with current position if dropped outside of Draggable component (right)', () => {
+    render(<App/>);
     let e = screen.getAllByRole("box")[0];
 
     Simulate.dragStart(e, {clientX: 10, clientY: 10});
@@ -120,9 +106,8 @@ describe("When Box component is dragged", () => {
     expect(resTop).toBe("");
   });
 
-  test('renders box with current position if dropped position is outside of draggable area (diagonal)', () => {
-    const { container } = render(<App/>);
-    document.body.appendChild(container);
+  test('renders a Box component with current position if dropped outside of Draggable Component (diagonal)', () => {
+    render(<App/>);
     let e = screen.getAllByRole("box")[0];
 
     Simulate.dragStart(e, {clientX: 0, clientY: 0});
